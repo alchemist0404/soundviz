@@ -10,6 +10,7 @@ import styles from "assets/jss/control-panel.js";
 
 import { Box, Tab, Tabs, Typography } from "@material-ui/core";
 import { ColorLens, MusicNote, Tune, FontDownload, Print, AspectRatio } from "@material-ui/icons";
+import UploadAudio from './UploadAudio';
 
 const useStyles = makeStyles(styles);
 
@@ -25,9 +26,7 @@ function TabPanel(props) {
             {...other}
         >
             {value === index && (
-                <Box p={3}>
-                    <Typography>{children}</Typography>
-                </Box>
+                children
             )}
         </div>
     );
@@ -71,22 +70,22 @@ export default function ControlPanel(props) {
                 <Tab className={classes.controlTab} icon={<Print />} aria-label="Print" {...a11yProps(4)} />
                 <Tab className={classes.controlTab} icon={<AspectRatio />} aria-label="Size" {...a11yProps(5)} />
             </Tabs>
-            <TabPanel value={activeTab} index={0}>
-                Upload Audio
+            <TabPanel className={classes.tabPanel} value={activeTab} index={0}>
+                <UploadAudio />
             </TabPanel>
-            <TabPanel value={activeTab} index={1}>
+            <TabPanel className={classes.tabPanel} value={activeTab} index={1}>
                 Set Color
             </TabPanel>
-            <TabPanel value={activeTab} index={2}>
+            <TabPanel className={classes.tabPanel} value={activeTab} index={2}>
                 Set Style
             </TabPanel>
-            <TabPanel value={activeTab} index={3}>
+            <TabPanel className={classes.tabPanel} value={activeTab} index={3}>
                 Set Text
             </TabPanel>
-            <TabPanel value={activeTab} index={4}>
+            <TabPanel className={classes.tabPanel} value={activeTab} index={4}>
                 Print
             </TabPanel>
-            <TabPanel value={activeTab} index={5}>
+            <TabPanel className={classes.tabPanel} value={activeTab} index={5}>
                 Set Size
             </TabPanel>
         </div>

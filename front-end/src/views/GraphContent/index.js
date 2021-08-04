@@ -13,16 +13,11 @@ export default function GraphContent(props) {
 	const [frequencyData, setFrequencyData] = useState([]);
 
 	useEffect(() => {
-		fetch('Dream English Traditional ABC01.mp3')
-			.then(response => response.arrayBuffer())
-			.then(buffer => {
-				const data = new Uint8Array(buffer);
-				setFrequencyData(data);
-			})
+		
 	}, [])
 
 	useEffect(() => {
-		console.log(`frequencyData`, frequencyData)
+		// console.log(`frequencyData`, frequencyData)
 	}, [frequencyData])
 
 	return (
