@@ -1,9 +1,21 @@
 module.exports = {
+    "DOMAIN" : "https://dev.waveable.co.uk/",
     "BASEURL" : __dirname+"/upload/",
+    "MUSICURL" : __dirname+"/upload/music/",
+    "JSONURL" : __dirname+"/upload/json/",
+    "PDFURL" : __dirname+"/upload/pdf/",
+    "IMAGEURL" : __dirname+"/upload/image/",
+    "FONTSURL" : __dirname+"/upload/fonts/",
     "APPURL" : __dirname+"/clients/apps/",
     "DIR" : __dirname,
     "ADMINPASSMETHOD" : "admin",
+    "SPOTIFY_CLIENTID": "9a065df6085144fcab9176efa0ecdf1b",
+    "SPOTIFY_CLIENTSECRET": "e3763ea329a24ceaaf7657f916ff6e1c",
+    "CUSTOMER_KEY": "ck_26da5ec90dabe51851c3959efcd0bed7586025a8",
+    "CUSTOMER_SECRET": "cs_7a00ff5010fe47e92e4037133ba1bd91d3bb1f3d",
     "PRODB": "mongodb://localhost:27017/soundviz",
     "TESTDB": "mongodb://localhost:27017/soundviz",
-    "ServerPort": 20127
+    "DevServerPort": 2021,
+    "ServerPort": 443,
+    "EXPIRE_TIME": 1000 * 3600 * 48
 }

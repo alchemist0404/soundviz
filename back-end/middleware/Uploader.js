@@ -1,4 +1,6 @@
 const multer = require('multer')
+var md5 = require('md5');
+
 class UploaderManager {
   constructor(filePath) {
     this.assetsPath = filePath;
@@ -7,7 +9,7 @@ class UploaderManager {
         cb(null, filePath);
       },
       filename: function(req, file, cb) {
-        cb(null, Date.now() +'.'+ file.originalname.split('.')[file.originalname.split('.').length - 1]);
+        cb(null, md5(String(new Date().valueOf())) +'.'+ file.originalname.split('.')[file.originalname.split('.').length - 1]);
       }
     });
   }

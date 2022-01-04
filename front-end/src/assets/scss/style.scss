@@ -1,8 +1,105 @@
-html, body {
-    width: 100%;
-    height: 100%;
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 #root {
+  height: 100%;
+  // padding-top: 70px;
+  overflow-y: auto;
+}
+#graph_content {
+  svg {
+    max-height: 95vh;
+    max-width: 100%;
+  }
+}
+
+#color_picker_input {
+    div:first-child {
+        width: 100%;
+        div[data-testid] {
+            flex: 1;
+            margin-right: 10px;
+        }
+    }
+}
+#audio_text_content {
+  position: relative;
+  overflow: visible;
+  .resizer {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: red;
+    &.top-left {
+      top: -2.5px;
+      left: -2.5px;
+      cursor: nwse-resize;
+    }
+    &.top-right {
+      top: -2.5px;
+      right: -2.5px;
+      cursor: nesw-resize;
+    }
+    &.bottom-right {
+      bottom: -2.5px;
+      right: -2.5px;
+      cursor: nwse-resize;
+    }
+    &.bottom-left {
+      bottom: -2.5px;
+      left: -2.5px;
+      cursor: nesw-resize;
+    }
+  }
+  .dragger {
+    position: absolute;
+    cursor: move;
+    &.top {
+      width: 100%;
+      height: 0px;
+      border-top: 1px solid red;
+      border-top-style: dashed;
+      top: 0;
+    }
+    &.bottom {
+      width: 100%;
+      height: 0px;
+      border-bottom: 1px solid red;
+      border-bottom-style: dashed;
+      bottom: -1px;
+    }
+    &.left {
+      width: 0;
+      height: 100%;
+      border-right: 1px solid red;
+      border-right-style: dashed;
+      left: -1px;
+      top: 0;
+    }
+    &.right {
+      width: 0;
+      height: 100%;
+      border-left: 1px solid red;
+      border-left-style: dashed;
+      right: 0;
+      top: 0;
+    }
+  }
+  .audio-text-input {
+    width: 100%;
     height: 100%;
-    padding-top: 70px;
+    resize: none;
+    border: 0;
+    border-radius: 0;
+    background: 0;
+    overflow-y: hidden;
+    &::placeholder {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      text-align: center;
+    }
+  }
 }

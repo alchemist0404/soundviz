@@ -1,8 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-// const userRouter = require("./user_router")
+const audioRouter = require("./audio_router")
+const styleRouter = require("./style_router")
+const authRouter = require("./auth_router")
+const printRouter = require("./print_router")
 
-// router.use("/user",userRouter);
+router.use("/audio", audioRouter);
+router.use("/style", styleRouter);
+router.use("/auth", authRouter);
+router.use("/print", printRouter);
 
 module.exports = router;

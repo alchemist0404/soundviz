@@ -1,0 +1,174 @@
+@font-face {
+    font-family: 'Alfa Slab One';
+    src: url(./fonts/Alfa_Slab_One/AlfaSlabOne-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Allison';
+    src: url(./fonts/Allison/Allison-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Amatic SC';
+    src: url(./fonts/Amatic_SC/AmaticSC-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Architects Daughter';
+    src: url(./fonts/Architects_Daughter/ArchitectsDaughter-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Assistant';
+    src: url(./fonts/Assistant/Assistant-VariableFont_wght.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Bangers';
+    src: url(./fonts/Bangers/Bangers-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url(./fonts/Bebas_Neue/BebasNeue-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Berkshire Swash';
+    src: url(./fonts/Berkshire_Swash/BerkshireSwash-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Bungee';
+    src: url(./fonts/Bungee/Bungee-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Caveat';
+    src: url(./fonts/Caveat/Caveat-VariableFont_wght.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Coming Soon';
+    src: url(./fonts/Coming_Soon/ComingSoon-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Dancing Script';
+    src: url(./fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Fredoka One';
+    src: url(./fonts/Fredoka_One/FredokaOne-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Gowun Dodum';
+    src: url(./fonts/Gowun_Dodum/GowunDodum-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Great Vibes';
+    src: url(./fonts/Great_Vibes/GreatVibes-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Hahmlet';
+    src: url(./fonts/Hahmlet/Hahmlet-VariableFont_wght.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'IBM Plex Sans Thai Looped';
+    src: url(./fonts/IBM_Plex_Sans_Thai_Looped/IBMPlexSansThaiLooped-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Indie Flower';
+    src: url(./fonts/Indie_Flower/IndieFlower-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Lato';
+    src: url(./fonts/Lato/Lato-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Lobster';
+    src: url(./fonts/Lobster/Lobster-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Lobster Two';
+    src: url(./fonts/Lobster_Two/LobsterTwo-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Marck Script';
+    src: url(./fonts/Marck_Script/MarckScript-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Monoton';
+    src: url(./fonts/Monoton/Monoton-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Norican';
+    src: url(./fonts/Norican/Norican-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: url(./fonts/Open_Sans/OpenSans-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Orbitron';
+    src: url(./fonts/Orbitron/Orbitron-VariableFont_wght.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Parisienne';
+    src: url(./fonts/Parisienne/Parisienne-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Pragati Narrow';
+    src: url(./fonts/Pragati_Narrow/PragatiNarrow-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url(./fonts/Press_Start_2P/PressStart2P-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url(./fonts/Roboto/Roboto-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Rock Salt';
+    src: url(./fonts/Rock_Salt/RockSalt-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Sacramento';
+    src: url(./fonts/Sacramento/Sacramento-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Staatliches';
+    src: url(./fonts/Staatliches/Staatliches-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url(./fonts/Ubuntu/Ubuntu-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Varela Round';
+    src: url(./fonts/Varela_Round/VarelaRound-Regular.ttf) format('truetype');
+}
