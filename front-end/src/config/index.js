@@ -5,7 +5,7 @@ import printSizes from './print_sizes'
 import profileRoutes from './profile_router'
 
 export const Root = {
-    baseurl: process.env.NODE_ENV === "production" ? "https://dev.waveable.co.uk/" : "http://192.168.114.35:2021/",
+    baseurl: process.env.NODE_ENV === "production" ? "https://dev.waveable.co.uk/" : "http://localhost:2021/",
     key: "audio_wave_usr",
     sessionKey: "audio_wave_usr_session",
     spotifyAuth: "spotify_client_session",

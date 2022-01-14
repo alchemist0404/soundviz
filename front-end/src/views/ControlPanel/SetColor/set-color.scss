@@ -1,0 +1,125 @@
+@import "../../../template.scss";
+@import "../../../style.scss";
+.color-container{
+    padding: 10px;
+    padding-bottom: 50px;
+    .color-box{
+        box-shadow: 0px 8px 40px 0px #7090B01A;
+        border-radius: 12px;
+        padding: 10px;
+        max-height: calc(100vh - 490px);
+        position: relative;
+        .color-list{
+            max-height: calc(100vh - 670px);
+            overflow: hidden;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            padding-right: 5px;
+            .MuiListItem-root{
+                border: 1px solid $border-color;
+                background: #ffffff;
+                box-shadow: 0px 18px 40px 0px hsla(210, 29%, 56%, 0.01);
+                border-radius: 20px;
+                padding: 5px 10px;
+                transition: .3s;
+                &:not(:first-child){
+                    margin-top: 10px;
+                }
+                &:hover{
+                    background: $border-color;
+                }
+            }
+            .color-pallete{
+                @include row;
+                @include align-center;
+                @include justify-space-between;
+                width: 100%;
+                .color-pallet-box{
+                    @include row;
+                    @include align-center;
+                    .caption{
+                        font-family: $primary-font;
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: $font-color;
+                        margin-right: 5px
+                    }
+                    .colors{
+                        @include row;
+                        @include align-center;
+                        width: unset !important;
+                        height: unset !important;
+                        padding: 20px;
+                        border-radius: 10px !important;
+                    }
+                }
+                .selcted{
+                    position: unset !important;
+                    transform: unset !important;
+                    @include row;
+                    @include align-center;
+                    @include justify-center;
+                    color: $primary-color;
+                    font-family: $primary-font;
+                    font-size: 15px;
+
+                }
+            }
+        }
+        .color-list-active{
+            max-height: calc(100vh - 730px);
+        }
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            background: #Ffffff;
+            
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #ffffff;
+            box-shadow: 0px 8px 20px 0px #7090B01F;
+            border-radius: 20px;
+            border: 1px solid $border-color;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #Ffffff;
+        }
+        .color-picker-box{
+            padding: 17px 0px;
+            padding-top: 0px;
+            .text-box{
+                padding: 10px 10px 0px;
+                .ColorPicker-MuiFormControl-root{
+                    width: 100%;
+                    font-family: $primary-font;
+                    font-size: 14px;
+                    input{
+                        font-size: 14px;
+                        color: $font-color ;
+                        font-family: $primary-font;
+                    }
+                    .MuiFormLabel-root{
+                        font-size: 14px;
+                        font-family: $primary-font;
+                    }
+                }
+            }
+        }
+    }
+}
+.color-pick-container{
+    @include row;
+    @include align-center;
+    @include justify-center;
+    .color{
+        padding: 0px 10px;
+        text-align: center;
+    }
+}

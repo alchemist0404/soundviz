@@ -10,6 +10,10 @@ import styles from "assets/jss/control-panel.js";
 
 import { Box, Grid, Tab, Tabs, Typography } from "@material-ui/core";
 import { ColorLens, MusicNote, Tune, FontDownload, Print, AspectRatio, CheckCircle } from "@material-ui/icons";
+import FormatColorFillOutlinedIcon from '@mui/icons-material/FormatColorFillOutlined';
+import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined';
+import TextFieldsIcon from '@mui/icons-material/TextFields';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import UploadAudio from 'views/ControlPanel/Audios';
 import SetColor from './SetColor';
 import SetStyle from './SetStyle';
@@ -24,7 +28,7 @@ import Header from "views/Components/Header";
 import { useDispatch, useSelector } from "react-redux";
 import { handleActiveTab } from "redux/actions/theme";
 import { Root } from "config";
-
+import './control-panel.scss';
 const useStyles = makeStyles(styles);
 
 function TabPanel(props) {
@@ -83,7 +87,7 @@ export default function ControlPanel(props) {
     }
 
     return (
-        <div className={classes.controlPanel}>
+        <div className="tabs">
             <Header />
             <Tabs
                 value={activeTab}
@@ -95,9 +99,9 @@ export default function ControlPanel(props) {
                 className={classes.controlTabs}
             >
                 {userData ? <Tab className={classes.controlTab} icon={<MusicNote />} aria-label="Audio" value={0} {...a11yProps(0)} /> : null}
-                <Tab className={classes.controlTab} icon={<ColorLens />} aria-label="Color" value={1} {...a11yProps(1)} />
-                <Tab className={classes.controlTab} icon={<Tune />} aria-label="Style" value={2} {...a11yProps(2)} />
-                <Tab className={classes.controlTab} icon={<FontDownload />} aria-label="Text" value={3} {...a11yProps(3)} />
+                <Tab className={classes.controlTab} icon={<FormatColorFillOutlinedIcon />} aria-label="Color" value={1} {...a11yProps(1)} />
+                <Tab className={classes.controlTab} icon={<TuneOutlinedIcon />} aria-label="Style" value={2} {...a11yProps(2)} />
+                <Tab className={classes.controlTab} icon={<TextFieldsIcon />} aria-label="Text" value={3} {...a11yProps(3)} />
                 {userData ? <Tab className={classes.controlTab} icon={<Print />} aria-label="Print" value={4} {...a11yProps(4)} /> : null}
                 {
                     userData ?
@@ -108,10 +112,10 @@ export default function ControlPanel(props) {
             </Tabs>
             <TabPanel className={classes.tabPanel} value={activeTab} index={7}>
                 <div className={classes.p10}>
-                    <Grid className={classes.title}>
-                        <Typography variant="h4">WELCOME!</Typography>
-                        <Typography variant="body1" className={classes.uploadDescription}>{`We’ve loaded a demo sound so you can play around and see how this works.`}</Typography>
-                        <Typography variant="body1" className={classes.uploadDescription}>{`Begin our short tutorial or create your own sound wave at any time.`}</Typography>
+                    <Grid className="title">
+                        <Typography variant="h4" className="title-heading">WELCOME!</Typography>
+                        <Typography variant="body1" className="title-description">{`We’ve loaded a demo sound so you can play around and see how this works.`}</Typography>
+                        <Typography variant="body1" className='title-description'>{`Begin our short tutorial or create your own sound wave at any time.`}</Typography>
                     </Grid>
                 </div>
             </TabPanel>

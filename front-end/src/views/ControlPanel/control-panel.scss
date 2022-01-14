@@ -1,0 +1,108 @@
+@import "../../template.scss";
+@import "../../style.scss";
+.tabs{
+    .MuiTabs-root{
+        .MuiButtonBase-root{
+            min-width:  unset;
+            border-bottom: 2px solid $background-color;
+            color: $font-color;
+        }
+        .MuiTab-textColorSecondary {
+        }
+        .MuiButtonBase-root.Mui-selected{
+            color: $primary-color;
+        }
+    }
+    .PrivateTabIndicator-colorPrimary-5 {
+        background-color: $primary-color;
+    }
+}
+.slider-container{
+    .slider-box{
+        padding-top: 10px;
+        .label-text{
+            font-size: 13px;
+            font-weight: bold;
+            font-family: $primary-font;
+            color: $font-color;
+            text-transform: capitalize;
+            padding-bottom: 5pxpx;
+        }
+        .slide-box{
+            width: 97%;
+        }
+        .MuiSlider-rail {
+            color: #ffffff !important;
+            border: 1px solid $border-color;
+            border-radius: 20px;
+            height: 6px !important;
+        }
+        .MuiSlider-track {
+            color: $primary-color;
+            border-radius: 20px;
+            height: 6px;
+        }
+        .MuiSlider-thumb{
+            background: $primary-color;
+            border: none;
+            width: 20px;
+            height: 20px;
+            margin-top: -8px;
+            margin-left: -4px;
+            .bar{
+                width: unset;
+                height: unset;
+                padding: 5px;
+                border-radius: 50%;
+                background: #ffffff;
+               &:not(:first-child){
+                   display: none;
+               }
+            }
+        }
+    }
+}
+
+.set-text-container{
+    padding: 20px;
+    .text-field{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .column-box{
+        padding: 10px;
+    }
+    .icon-container{
+        padding: 0px 10px;
+        .icon-list{
+            @include row;
+            @include align-center;
+            overflow: hidden;
+            border-radius: 15px;
+            border: 1px solid $border-color;
+            box-shadow: 0px 8px 40px 0px #7090B01A;
+            width: 100%;
+            .MuiIconButton-root{
+                padding: 12px 15.5px !important;
+                border-radius: 0px !important;
+                color: $font-color;
+                font-weight: bold;
+            }
+            .MuiIconButton-root.active{
+                background: $primary-color;
+                color: #ffffff;
+            }
+        }
+    }
+}
+.tour-complete{
+    .img-box{
+    @include row;
+    @include align-center;
+    @include justify-center;
+        min-height: calc(100vh - 327px);
+        padding: 20px;
+        width: 100%;
+    }
+
+}

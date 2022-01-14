@@ -1,0 +1,204 @@
+@import "template.scss";
+.content{
+    padding: 0px 40px;
+    font-family:$primary-font;
+    @include for-responsive($screen-medium){
+        padding: 0px 20px !important;
+    }
+}
+
+a{
+    &:hover{
+        text-decoration: none;
+    }
+}
+.w-100{
+    width: 100%;
+}
+.px-0{
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}
+.p-0{
+   padding: 0px !important;
+}
+.pr-0{
+        padding-right: 0px !important;
+    }
+.pl-0{
+    padding-left: 0px !important;
+}
+.text-right{
+    text-align: right !important;
+}
+.text-center{
+    text-align: center !important;
+}
+.text-left{
+    text-align: left !important;
+}
+.text-capitalize{
+    text-transform: capitalize;
+}
+.title{
+    padding: 20px 30px 0px;
+    .title-heading{
+        font-family: $primary-font;
+        font-weight: bold;
+        font-size: 28px;
+        color: $font-color;
+        margin: 0px;
+        margin-bottom: 10px;
+    }
+    .title-description{
+        font-family: $primary-font;
+        font-size: 14px;
+        line-height: 14px;
+        color: $font-color;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+}
+
+ .secondary-btn{
+    border: 1px solid $border-color !important;
+    background: #ffffff !important;
+    box-shadow: 0px 18px 40px 0px #7090B01F !important;
+    font-size: 14px !important;
+    border-radius: 10px !important;
+    padding: 10px 20px !important;
+    font-family: $primary-font !important;
+    color: $font-color !important;
+    font-weight: bold !important;
+    text-transform: capitalize !important;
+    &:hover{
+        background: #ffffff !important;
+    }
+}
+.primary-btn{
+    border: 1px solid $primary-color !important;
+    background: $primary-color !important;
+    box-shadow: 0px 18px 40px 0px #7090B01F !important;
+    font-size: 14px !important;
+    border-radius: 10px !important;
+    padding: 10px 20px !important;
+    font-family: $primary-font !important;
+    color: #ffffff !important;
+    font-weight: bold;
+    text-transform: capitalize !important;
+    &:hover{
+        background: $primary-color !important;
+    }
+}
+
+.btn-container{
+    @include row;
+    @include align-center;
+    padding: 0px 10px;
+    .btn-box{
+        padding: 10px;
+        width: 50%;
+        button{
+            width: 100%;
+        }
+    }
+}
+
+.modal{
+    @include row;
+    @include align-center;
+    @include justify-center;
+    .modal-container{
+        background: #ffffff;
+        width: 100%;
+        border-radius: 15px;
+        border: 1px solid $border-color;
+        position: relative;
+        .close-btn{
+            position: absolute;
+            right: 0;
+            top: 0;
+            padding: 15px;
+            font-family: $primary-font;
+            font-size: 18px;
+            font-weight: bold;
+            color: $font-color;
+        }
+        .modal-body{
+            padding: 10px 20px;
+            .modal-title{
+                font-family: $primary-font;
+                font-size: 20px;
+                font-weight: bold;
+                color: $font-color;
+            }
+            .text-box{
+                padding: 20px 0px;
+            }
+            .modal-subtitle{
+                font-family: $primary-font;
+                font-size: 13px;
+                padding: 20px 0px;
+                display: inline-block;
+                color: $font-color;
+            }
+        }
+        .modal-footer{
+            @include row;
+            @include align-center;
+            @include justify-end;
+            padding: 10px;
+            .MuiTypography-root{
+                font-family: $primary-font;
+                font-size: 14px;
+                color: $font-color;
+                font-weight: bold;
+                margin-right: 10px;
+            }
+            .MuiCheckbox-root {
+                color: $font-color;
+            }
+            .MuiCheckbox-root.Mui-checked  {
+                color: $primary-color;
+            }
+        }
+    }
+    .modal-md{
+        max-width: 500px;
+    }
+}
+.color-picker-textbox{
+    border: 1px solid $border-color;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 5px;
+    box-shadow: 0px 8px 40px 0px #7090B01A;
+    .ColorPicker-MuiTextField-root{
+        margin-top: 6px;
+    }
+}
+.ColorPicker-MuiInput-underline:before{
+    border: none !important;
+}
+.ColorPicker-MuiInput-underline::after{
+    border: none !important;
+}
+.MuiOutlinedInput-root {
+   border-radius: 15px !important;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: $primary-color!important;
+}
+.MuiFormLabel-root.Mui-focused {
+    color: $primary-font!important;
+}
+.MuiSelect-select:focus{
+    background: none !important;
+}
+.MuiSelect-outlined.MuiSelect-outlined{
+    overflow: hidden;
+}
+.MuiOutlinedInput-notchedOutline{
+    border-color: $border-color !important ;
+    box-shadow: 0px 8px 40px 0px #7090B01A;
+}

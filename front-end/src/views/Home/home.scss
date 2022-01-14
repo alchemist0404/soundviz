@@ -1,0 +1,42 @@
+@import "../../template.scss";
+@import "../../style.scss";
+.main-container{
+    background: $background-color;
+    padding: 25px;
+    @include row;
+    min-height: 100vh;
+    .aside-left{
+        width:430px;
+        background: #ffffff;
+        border-radius: 15px;
+        position: relative;
+        .logo{
+            width: 100%;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .tabs{
+            .MuiBox-root{
+                .MuiButtonBase-root{
+                    min-width:  unset;
+                    border-bottom: 2px solid $background-color;
+                }
+                .MuiTab-textColorSecondary {
+                    color: $font-color;
+                }
+                .MuiTab-textColorSecondary.Mui-selected {
+                    color: $primary-color;
+                }
+            }
+            .PrivateTabIndicator-colorSecondary-7 {
+                background-color: $primary-color;
+            }
+        }
+    }
+    .aside-right{
+        width: calc(100% - 260px);
+        @include row;
+        @include justify-center;
+        @include align-center;
+    }
+}

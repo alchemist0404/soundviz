@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Axios } from "redux/services";
 import { audioList, selectedAudio, updateAudioStyle } from "redux/actions/audio";
 import { Root } from "config";
-
+import './home.scss';
 const useStyles = makeStyles(styles);
 
 export default function Components(props) {
@@ -113,14 +113,22 @@ export default function Components(props) {
         }}
         {...rest}
       /> */}
-      <Grid container className={classes.root}>
+      {/* <Grid container className={classes.root}>
         <Grid item md={4} lg={3} sm={5} xs={12}>
-          <ControlPanel />
+         
         </Grid>
         <Grid item md={8} lg={9} sm={7} xs={12}>
-          <GraphContent />
+          
         </Grid>
-      </Grid>
+      </Grid> */}
+      <div className="main-container">
+          <div className="aside-left">
+            <ControlPanel />
+          </div>
+          <div className="aside-right">
+            <GraphContent />
+          </div>
+      </div>
     </React.Fragment>
   );
 }

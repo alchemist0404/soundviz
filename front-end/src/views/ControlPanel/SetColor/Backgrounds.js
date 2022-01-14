@@ -3,6 +3,7 @@ import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { makeStyles } from "@material-ui/core/styles";
 import styles from "assets/jss/control-panel.js";
+import './set-color.scss';
 import {
   Button,
   Grid,
@@ -86,87 +87,109 @@ export default function Backgrounds(props) {
 
   return (
     <React.Fragment>
-      <ColorPickerInput
-        className={classNames(classes.formControl, classes.w100)}
-        value={backgroundColor}
-        onChange={changeCustomColor}
-      />
-      {
-        saveColor ? <TextField id="outlined-basic" label="Please write the name." value={colorName} onChange={(e) => setColorName(e.target.value)} className={classNames(classes.mt10, classes.w100)} variant="outlined" /> : null
-      }
-      {
-        saveColor ?
-          <Grid container justify="space-between">
-            <Button
-              variant="outlined"
-              color="primary"
-              startIcon={<Add />}
-              className={classNames(classes.mt10, classes.w45)}
-              onClick={() => saveBackgroundColor()}
-            >
-              Save
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classNames(classes.mt10, classes.w45)}
-              onClick={() => {
-                setSaveColor(false);
-                setColorName("");
-              }}
-            >
-              Cancel
-            </Button>
-          </Grid>
-          :
-          <Button
-            variant="outlined"
-            color="primary"
-            startIcon={<Add />}
-            className={classNames(classes.w100, classes.mt10)}
-            onClick={() => wantSaveBackgroundColor()}
-          >
-            Save this background
-          </Button>
-      }
-      <List>
-        {backgroundLists.map((item, i) => (
-          <ListItem
-            key={i}
-            button
-            className={classes.audioListItem}
-            onClick={() => {
-              dispatch(selectedBackground(item.color));
-              dispatch(updateAudioStyles());
-            }}
-          >
-            <Grid container alignItems="center">
-              <Grid
-                style={{
-                  backgroundColor: item.color,
-                  width: "30px",
-                  height: "30px",
-                }}
-              ></Grid>
-              <Typography variant="subtitle1" style={{ marginLeft: "10px" }}>
-                {item.name}
-              </Typography>
-            </Grid>
-            {backgroundColor === item.color ? (
-              <ListItemSecondaryAction
-                className={classNames(classes.dFlex, classes.aCenter)}
-              >
-                <Done />
-              </ListItemSecondaryAction>
-            ) : null}
-          </ListItem>
-        ))}
-      </List>
-      <Snackbar open={openAlert.open} autoHideDuration={5000} onClose={() => setOpenAlert({ ...openAlert, open: false })}>
-        <Alert onClose={() => setOpenAlert({ ...openAlert, open: false })} severity={openAlert.status}>
-          {openAlert.text}
-        </Alert>
-      </Snackbar>
+     <div className="color-container">
+        <div className="color-box">
+          <div className="color-picker-box">
+            <div className="text-box">
+                <ColorPickerInput
+                className="color-picker-textbox"
+                value={backgroundColor}
+                onChange={changeCustomColor}
+              />
+            </div>
+            {
+              saveColor ? 
+              <div className="text-box"><TextField id="outlined-basic" label="Please write the name." value={colorName} onChange={(e) => setColorName(e.target.value)} className={classNames(classes.mt10, classes.w100)} variant="outlined" /> </div> : null
+            }
+            {
+              saveColor ?
+                <Grid className="btn-container px-0">
+                  <div className="btn-box">
+                      <Button
+                      variant="outlined"
+                      color="primary"
+                      startIcon={<Add />}
+                      className="secondary-btn"
+                      onClick={() => saveBackgroundColor()}
+                    >
+                      Save
+                    </Button>
+                  </div>
+                  <div className="btn-box">
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      className="primary-btn"
+                      onClick={() => {
+                        setSaveColor(false);
+                        setColorName("");
+                      }}
+                    >
+                      Cancel
+                    </Button>
+                  </div>
+                </Grid>
+                :
+                null
+            }
+          </div>
+            <List className={saveColor ? 'color-list-active color-list' : 'color-list'}>
+              {backgroundLists.map((item, i) => (
+                <ListItem
+                  key={i}
+                  button
+                  className={classes.audioListItem}
+                  onClick={() => {
+                    dispatch(selectedBackground(item.color));
+                    dispatch(updateAudioStyles());
+                  }}
+                >
+                  <Grid className="color-pallete">
+                    <Grid className="color-pallet-box">
+                      <Grid
+                        style={{
+                          backgroundColor: item.color,
+                          width: "30px",
+                          height: "30px",
+                        }}
+                        className="colors"
+                      ></Grid>
+                      <Typography variant="subtitle1" className="caption" style={{ marginLeft: "10px" }}>
+                        {item.name}
+                      </Typography>
+                    </Grid>
+                    {backgroundColor === item.color ? (
+                      <ListItemSecondaryAction
+                        className="selcted"
+                      >
+                        <Done />
+                      </ListItemSecondaryAction>
+                    ) : null}
+                  </Grid>
+                </ListItem>
+              ))}
+            </List>
+              {
+                !saveColor ?
+                <Button
+                  variant="outlined"
+                  color="primary"
+                  startIcon={<Add />}
+                  className="secondary-btn w-100"
+                  onClick={() => wantSaveBackgroundColor()}
+                >
+                  Save this background
+                </Button>
+                :
+                null
+            }
+            <Snackbar open={openAlert.open} autoHideDuration={5000} onClose={() => setOpenAlert({ ...openAlert, open: false })}>
+              <Alert onClose={() => setOpenAlert({ ...openAlert, open: false })} severity={openAlert.status}>
+                {openAlert.text}
+              </Alert>
+            </Snackbar>
+        </div>
+      </div>
     </React.Fragment>
   );
 }

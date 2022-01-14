@@ -11,6 +11,7 @@ import {
   Select,
   TextField,
   Typography,
+  InputLabel
 } from "@material-ui/core";
 import ColorPickerInput from "views/Components/ColorPickerInput";
 import {
@@ -118,148 +119,143 @@ export default function SetText(props) {
 
   return (
     <div className={classes.setText}>
-      <Grid className={classes.title}>
-        <Typography variant="h5">TEXT</Typography>
-        <Typography variant="body2" className={classes.uploadDescription}>
+      <Grid className="title">
+        <Typography variant="h5" className="title-heading">TEXT</Typography>
+        <Typography variant="body2" className="title-description">
           Type in text that you would like displayed on your artwork, such as
           the song name or words that were recorded.
         </Typography>
       </Grid>
-      <TextField
-        id="outlined-basic"
-        label="Write a letter you want"
-        value={displayText}
-        onChange={handleInputText}
-        className={classNames(classes.mt10, classes.w100)}
-        variant="outlined"
-      />
-      {displayText.length > 0 ? (
-        <React.Fragment>
-          <Grid
-            className={classNames(classes.mt20)}
-            container
-            direction="column"
-            alignItems="center"
-          >
-            <Typography variant="subtitle2" className={classes.sLeft}>
-              Font
-            </Typography>
-            <FormControl
-              variant="outlined"
-              className={classNames(classes.formControl, classes.w100)}
+      <div className="set-text-container">
+        <TextField
+          id="outlined-basic"
+          label="Write a letter you want"
+          value={displayText}
+          onChange={handleInputText}
+          className="text-field"
+          variant="outlined"
+        />
+        {displayText.length > 0 ? (
+          <React.Fragment>
+            <Grid
+              className={classNames(classes.mt20)}
+              container
+              direction="column"
+              alignItems="center"
             >
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={textFont}
-                onChange={(e) => {
-                  dispatch(setFont(e.target.value));
-                  dispatch(updateAudioStyles());
-                }}
-                className={classNames(classes.w100)}
-              >
-                {Root.fonts.map((item, i) => (
-                  <MenuItem value={item.name} key={i} style={{ fontFamily: item.name }}>
-                    {item.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid
-            className={classNames(classes.mt20)}
-            container
-            direction="column"
-            alignItems="center"
-          >
-            <Typography variant="subtitle2" className={classes.sLeft}>
-              Color
-            </Typography>
-            <ColorPickerInput
-              className={classNames(classes.formControl, classes.w100)}
-              value={textColor}
-              onChange={handleChangeColorInput}
-            />
-          </Grid>
-          <Grid
-            className={classNames(classes.mt20)}
-            container
-            direction="column"
-            alignItems="center"
-          >
-            <Typography variant="subtitle2" className={classes.sLeft}>
-              Size
-            </Typography>
-            <FormControl
-              variant="outlined"
-              className={classNames(classes.formControl, classes.w100)}
+            </Grid>
+            <Grid
+              className={classNames(classes.mt20)}
+              container
+              direction="column"
+              alignItems="center"
             >
-              <Select
-                value={fontSize}
-                onChange={(e) => {
-                  dispatch(setFontSize(e.target.value));
-                  dispatch(updateAudioStyles());
-                }}
-                className={classNames(classes.w100)}
-              >
-                {sizes.map((item, i) => (
-                  <MenuItem value={item} key={i}>
-                    {item}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid className={classNames(classes.mt20)} container>
-            <Grid item xs={6} container direction="column" alignItems="center">
-              <Typography variant="subtitle2" className={classes.sLeft}>
-                Justification
-              </Typography>
-              <Grid container alignItems="center">
-                <IconButton
-                  aria-label="linear"
-                  onClick={() => handleJustification(0)}
+              <ColorPickerInput
+                className="color-picker-textbox w-100"
+                value={textColor}
+                onChange={handleChangeColorInput}
+              />
+            </Grid>
+            <Grid
+              container
+              direction="row"
+              alignItems="center"
+            >
+              <Grid xs={6} className="column-box pl-0">
+                <FormControl
+                  variant="outlined"
+                  className="text-field"
                 >
-                  <Icon
-                    icon="carbon:align-horizontal-left"
-                    className={classNames(
-                      textJustification === 0 ? classes.activeAlignIcon : null
-                    )}
-                  />
-                </IconButton>
-                <IconButton
-                  aria-label="linear"
-                  onClick={() => handleJustification(1)}
+                <InputLabel id="demo-simple-select-label">Select Your Font</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={textFont}
+                    label="Select Your Font"
+                    onChange={(e) => {
+                      dispatch(setFont(e.target.value));
+                      dispatch(updateAudioStyles());
+                    }}
+                  >
+                    {Root.fonts.map((item, i) => (
+                      <MenuItem value={item.name} key={i} style={{ fontFamily: item.name }}>
+                        {item.name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid xs={6}  className="column-box pr-0">
+                <FormControl
+                  variant="outlined"
+                  className="text-field"
                 >
-                  <Icon
-                    icon="carbon:align-horizontal-center"
-                    className={classNames(
-                      textJustification === 1 ? classes.activeAlignIcon : null
-                    )}
-                  />
-                </IconButton>
-                <IconButton
-                  aria-label="linear"
-                  onClick={() => handleJustification(2)}
-                >
-                  <Icon
-                    icon="carbon:align-horizontal-right"
-                    className={classNames(
-                      textJustification === 2 ? classes.activeAlignIcon : null
-                    )}
-                  />
-                </IconButton>
+                <InputLabel id="demo-simple-select-label">Font Size</InputLabel>
+                  <Select
+                    value={fontSize}
+                    label="Font Size"
+                    onChange={(e) => {
+                      dispatch(setFontSize(e.target.value));
+                      dispatch(updateAudioStyles());
+                    }}
+                  >
+                    {sizes.map((item, i) => (
+                      <MenuItem value={item} key={i}>
+                        {item}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </Grid>
             </Grid>
-            <Grid item xs={6} container direction="column" alignItems="center">
-              <Typography variant="subtitle2" className={classes.sLeft}>
-                Vertical alignment
-              </Typography>
-              <Grid container alignItems="center">
-                <IconButton
-                  aria-label="linear"
-                  onClick={() => handleVerticalization(0)}
-                >
+            <Grid  container direction="row" alignItems="center">
+              <Grid xs={6} className="icon-container pl-0">
+                <div className="icon-list">
+                  <IconButton
+                    aria-label="linear"
+                    onClick={() => handleJustification(0)}
+                    className={(textJustification == 0 ) ? 'active' : ''}
+                  >
+                    <Icon
+                      icon="carbon:align-horizontal-left"
+                      className={classNames(
+                        textJustification === 0 ? classes.activeAlignIcon : null
+                      )}
+                    />
+                  </IconButton>
+                  <IconButton
+                    aria-label="linear"
+                    onClick={() => handleJustification(1)}
+                    className={(textJustification == 1 ) ? 'active' : ''}
+                  >
+                    <Icon
+                      icon="carbon:align-horizontal-center"
+                      className={classNames(
+                        textJustification === 1 ? classes.activeAlignIcon : null
+                      )}
+                    />
+                  </IconButton>
+                  <IconButton
+                    aria-label="linear"
+                    onClick={() => handleJustification(2)}
+                    className={(textJustification == 2 ) ? 'active' : ''}
+                  >
+                    <Icon
+                      icon="carbon:align-horizontal-right"
+                      className={classNames(
+                        textJustification === 2 ? classes.activeAlignIcon : null
+                      )}
+                    />
+                  </IconButton>
+                </div>
+              </Grid>
+              <Grid xs={6} className="icon-container pr-0">
+                <div className="icon-list">
+                  <IconButton
+                    aria-label="linear"
+                    onClick={() => handleVerticalization(0)}
+                    className={(textVerticalAlign == 0 ) ? 'active' : ''}
+                  >
                   <Icon
                     icon="carbon:align-vertical-top"
                     className={classNames(
@@ -270,6 +266,7 @@ export default function SetText(props) {
                 <IconButton
                   aria-label="linear"
                   onClick={() => handleVerticalization(1)}
+                  className={(textVerticalAlign == 1 ) ? 'active' : ''}
                 >
                   <Icon
                     icon="carbon:align-vertical-center"
@@ -281,6 +278,7 @@ export default function SetText(props) {
                 <IconButton
                   aria-label="linear"
                   onClick={() => handleVerticalization(2)}
+                  className={(textVerticalAlign == 2 ) ? 'active' : ''}
                 >
                   <Icon
                     icon="carbon:align-vertical-bottom"
@@ -289,11 +287,12 @@ export default function SetText(props) {
                     )}
                   />
                 </IconButton>
+                </div>
               </Grid>
             </Grid>
-          </Grid>
-        </React.Fragment>
-      ) : null}
+          </React.Fragment>
+        ) : null}
+      </div>
     </div>
   );
 }

@@ -7,7 +7,8 @@ import { Grid, IconButton, Typography } from "@material-ui/core";
 import { AccountCircle } from "@material-ui/icons";
 import { Root } from "config";
 import { useHistory } from "react-router";
-
+import logo from '../../assets/img/logo.png';
+import "./control.scss";
 const useStyles = makeStyles(styles);
 
 export default function Header({ activeTab, handleActiveTab, tabs, handleRegister }) {
@@ -20,11 +21,13 @@ export default function Header({ activeTab, handleActiveTab, tabs, handleRegiste
     }
 
     return (
-        <Grid container justify="space-between" alignItems="center" className={classes.header}>
-            <Typography variant="h5" style={{ fontSize: "22px" }}>Audio Visualization</Typography>
+        <Grid className="header">
+            <div className="logo" styles="width: 100%;padding: 40px 20px;text-align: center;">
+                <img src={logo} />
+            </div>
             {
                 userData ?
-                    <IconButton aria-label="profile" size="medium" onClick={() => goProfile()} style={{padding: "0px", fontSize: "2.5rem"}}>
+                    <IconButton aria-label="profile" size="medium" onClick={() => goProfile()} className="profile">
                         <AccountCircle fontSize="inherit" />
                     </IconButton>
                     : <div></div>

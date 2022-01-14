@@ -204,6 +204,7 @@ export default function UploadAudio(props) {
                                 <Grid container className={classes.overflowHidden}>
                                     <Grid item className={classes.overflowHidden}>
                                         <Typography noWrap>{item.origin_name}</Typography>
+                                        <Typography variant="body2" noWrap>{item.artist_name}</Typography>
                                     </Grid>
                                     <Grid item>
                                         <Typography variant="caption">{new Date(item.date).toLocaleString()}</Typography>

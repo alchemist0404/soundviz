@@ -8,7 +8,7 @@ import { Root } from "config";
 import { Axios } from "redux/services";
 import { setFullPageLoading } from "redux/actions/theme";
 import MuiAlert from '@material-ui/lab/Alert';
-
+import './control.scss';
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -86,24 +86,24 @@ export default function FooterNavigation({ activeTab, tabs, handleRegister }) {
     }
 
     return (
-        <Grid container justify="space-between" className={classes.footerNavigation}>
+        <Grid container justify="space-between" className="footer-navigation">
             {
                 userData ?
                     <React.Fragment>
-                        <Button variant="outlined" color="primary" disableElevation onClick={() => goBack()}>Back</Button>
+                        <Button className="secondary-btn"  disableElevation onClick={() => goBack()}>Back</Button>
                         {
-                            tabs.indexOf(activeTab) + 1 === tabs.length ? <Button variant="contained" color="primary" disableElevation onClick={() => addToCart()}>Add to cart</Button>
-                                : <Button variant="contained" color="primary" disableElevation onClick={() => goNext()}>Next</Button>
+                            tabs.indexOf(activeTab) + 1 === tabs.length ? <Button className="primary-btn"  disableElevation onClick={() => addToCart()}>Add to cart</Button>
+                                : <Button className="primary-btn"  disableElevation onClick={() => goNext()}>Next</Button>
                         }
                     </React.Fragment>
                     :
-                    tabs.indexOf(activeTab) + 1 === tabs.length ? <Button variant="contained" color="primary" className={classes.w100} onClick={handleRegister}>CREATE A SOUND WAVE</Button> :
+                    tabs.indexOf(activeTab) + 1 === tabs.length ? <Button className="primary-btn w-100" onClick={handleRegister}>CREATE A SOUND WAVE</Button> :
                         <React.Fragment>
-                            <Button variant="outlined" color="primary" onClick={handleRegister}>Skip</Button>
+                            <Button className="secondary-btn"  onClick={handleRegister}>Skip</Button>
                             {
                                 activeTab === 7 ?
-                                    <Button variant="contained" color="primary" disableElevation onClick={() => dispatch(handleActiveTab(1))}>Start Tutorial</Button>
-                                    : <Button variant="contained" color="primary" disableElevation onClick={() => goNext()}>Next</Button>
+                                    <Button className="primary-btn"  disableElevation onClick={() => dispatch(handleActiveTab(1))}>Start Tutorial</Button>
+                                    : <Button className="primary-btn"  disableElevation onClick={() => goNext()}>Next</Button>
                             }
                         </React.Fragment>
             }

@@ -7,7 +7,8 @@ import Gradient from "javascript-color-gradient";
 import { Root } from "config";
 import { setText } from "redux/actions/text";
 import { updateAudioStyles } from "redux/actions/style";
-
+import { Axios } from "redux/services";
+import '../shell/shell.scss';
 const useStyles = makeStyles(styles);
 export default function GraphContent() {
 	const classes = useStyles();
@@ -453,8 +454,8 @@ export default function GraphContent() {
 	}
 
 	return (
-		<div className={classes.graphContent}>
-			<div className={classes.audioGraph} id="graph_content"></div>
+		<div className="graph-side">
+			<div className="graph-side" id="graph_content"></div>
 		</div>
 	);
 }

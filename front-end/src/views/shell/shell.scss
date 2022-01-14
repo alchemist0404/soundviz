@@ -1,0 +1,68 @@
+@import "../../template.scss";
+@import "../../style.scss";
+.main-container{
+    background: $background-color;
+    padding: 25px;
+    @include row;
+    min-height: 100vh;
+    .aside-left{
+        width:430px;
+        background: #ffffff;
+        border-radius: 15px;
+        .logo{
+            width: 100%;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .tabs{
+            .MuiBox-root{
+                .MuiButtonBase-root{
+                    min-width:  unset;
+                    border-bottom: 2px solid $background-color;
+                }
+                .MuiTab-textColorSecondary {
+                    color: $font-color;
+                }
+                .MuiTab-textColorSecondary.Mui-selected {
+                    color: $primary-color;
+                }
+            }
+            .PrivateTabIndicator-colorSecondary-7 {
+                background-color: $primary-color;
+            }
+        }
+        .welcome{
+            padding: 20px 30px;
+            h1{
+                font-family: $primary-font;
+                font-weight: bold;
+                font-size: 20px;
+                color: $font-color;
+                margin: 0px;
+                margin-bottom: 10px;
+            }
+            p{
+                font-family: $primary-font;
+                font-size: 13px;
+                line-height: 14px;
+                color: $font-color;
+            }
+        }
+    }
+    .aside-right{
+        width: calc(100% - 260px);
+        max-height: calc(100vh - 50px);
+        @include row;
+        @include justify-center;
+        @include align-center;
+    }
+}
+
+.graph-side{
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    .graph{
+        width: 100%;
+    }
+}

@@ -71,6 +71,10 @@ function Alert(props) {
 export default function SpotifySearch() {
     const classes = useStyles();
     const dispatch = useDispatch();
+    
+    const [state, setState] = useState({
+        filterString: ""
+    })
 
     const userData = JSON.parse(localStorage.getItem(Root.key))
 
@@ -85,14 +89,13 @@ export default function SpotifySearch() {
     // const [isLoading, setIsLoading] = useState(false);
 
     const handleFilterSong = async (e) => {
-        const filter = e.target.value;
         const spotifySession = localStorage.getItem(Root.spotifyAuth);
-        if (filter.length >= 3) {
+        if (state.filterString.length >= 3) {
             // setIsLoading(true)
             if (spotifySession) {
-                searchSpotifySongs(filter)
+                searchSpotifySongs(state.filterString)
             } else {
-                authenticateSpotify(filter)
+                authenticateSpotify(state.filterString)
             }
         } else {
             setFilteredSongs([])
@@ -114,7 +117,7 @@ export default function SpotifySearch() {
         const spotifySession = JSON.parse(localStorage.getItem(Root.spotifyAuth));
         const response = await Axios({ url: 'api/audio/searchSpotifySongs', data: { filter, access_token: spotifySession.access_token } })
         if (response.status) {
-            setFilteredSongs(response.data.tracks.items)
+            setFilteredSongs(response.data.tracks.items);
             // setIsLoading(false)
         } else {
             authenticateSpotify(filter)
@@ -137,9 +140,11 @@ export default function SpotifySearch() {
 
     const selectMusic = async (item) => {
         dispatch(setFullPageLoading())
-        const response = await Axios({ url: 'api/audio/loadingSpotifyMusic', data: { user_id: userData._id, preview_url: item.preview_url, name: item.name, image: item.album.images[1].url } })
+        const response = await Axios({ url: 'api/audio/loadingSpotifyMusic', data: { user_id: userData._id, preview_url: item.preview_url, name: item.name, artist_name: item.artists[0].name, image: item.album.images[1].url } })
         if (response.status) {
-            dispatch(audioList(response.data))
+            dispatch(audioList(response.data));            
+            setState({ ...state, filterString: '' });
+            setFilteredSongs([])
         } else {
             setOpenAlert({ ...openAlert, open: true, status: "error", text: response.data })
         }
@@ -164,6 +169,8 @@ export default function SpotifySearch() {
                 id="filled-search"
                 className={classes.searchInput}
                 label="Search over 70 million songs."
+                value={state.filterString}
+                onChange={(e) => setState({ ...state, filterString: e.target.value })}
                 onChangeCapture={handleFilterSong}
                 type="search"
                 variant="outlined"

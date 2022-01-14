@@ -10,16 +10,18 @@ import {
   ListItem,
   ListItemSecondaryAction,
   Snackbar,
+  IconButton,
   Typography,
 } from "@material-ui/core";
-import { Add, Done } from "@material-ui/icons";
+import { Add, Done, Delete } from "@material-ui/icons";
 import MuiAlert from "@material-ui/lab/Alert";
 import { Axios } from "redux/services";
 import MakeColorModal from "./MakeColorModal";
 import { selectedColor, colorList } from "redux/actions/color";
 import { Root } from "config";
 import { updateAudioStyles } from "redux/actions/style";
-
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import './set-color.scss';
 const useStyles = makeStyles(styles);
 
 function Alert(props) {
@@ -42,8 +44,9 @@ export default function SoundWaveColors(props) {
   const [openAlert, setOpenAlert] = useState({
     open: false,
     status: "success",
-    text: "",
+    text: ""
   });
+  const [deletingPallateId, setDeletePallateId] = useState("");
 
   const setSelectedColor = (e) => {
     dispatch(selectedColor(e));
@@ -80,84 +83,115 @@ export default function SoundWaveColors(props) {
     }
   };
 
+  // deletingPallateId = '';
+  const deletePalatte = async(id, e)=>{
+    e.stopPropagation();
+    var force = false;
+    if(deletingPallateId == id){
+      force = true;
+    }else{
+      force = false;
+    }
+    const response = await Axios({ url: 'api/style/deleteColor', data: { user_id: userData._id, _id: id, force: force } })
+    if (response.status) {
+        setDeletePallateId('');
+        setOpenAlert({ ...openAlert, open: true, status: "success", text: "A color palatte file has been deleted successfully!" })
+        dispatch(colorList(response.data))
+    }else {
+      if(response.confirm){
+        setOpenAlert({ ...openAlert, open: true, status: "warning", text: response.data });
+        setDeletePallateId(id);
+      }else {
+        setDeletePallateId('');
+      }
+    }
+  }
+
   useEffect(() => {
     setAllColors(colorsList.concat(Root.defaultColors));
   }, [colorsList]);
 
   return (
     <React.Fragment>
-      <Button
-        variant="outlined"
-        color="primary"
-        startIcon={<Add />}
-        className={classNames(classes.w100, classes.mt10)}
-        onClick={() => handleOpenModal(true)}
-      >
-        MAKE A COLOR PALETTE
-      </Button>
-      <List>
-        {allColors.map((item, i) => (
-          <ListItem
-            key={i}
-            button
-            className={classes.audioListItem}
-            onClick={() => setSelectedColor(item)}
-          >
-            <Grid container className={classes.fColumn}>
-              <Typography variant="caption" style={{ marginLeft: "2px" }}>
-                {item.name}
-              </Typography>
-              <Grid container>
-                {item.color.map((item, i) => (
-                  <Grid
-                    item
-                    key={i}
-                    style={{
-                      backgroundColor: item.color,
-                      width: "30px",
-                      height: "30px",
-                      borderRadius: "3px",
-                      margin: "0 2px",
-                    }}
-                  ></Grid>
-                ))}
+      <div className="color-container">
+        <div className="color-box">
+          <div className="title p-0">
+            <h4 className="title-heading">Choose Color</h4>
+            <p className="title-description">Select your Colors from given Pattern.</p>
+          </div>
+        <List className="color-list">
+          {allColors.map((item, i) => (
+            <ListItem
+              key={i}
+              button
+              className={classes.audioListItem}
+              onClick={() => setSelectedColor(item)}
+            >
+              <Grid className="color-pallete">
+                <Grid className="color-pallet-box">
+                  <Typography variant="caption" className="caption">
+                    {item.name}
+                  </Typography>
+                  {item.color.map((item, i) => (
+                    <Grid
+                      item
+                      key={i}
+                      style={{
+                        backgroundColor: item.color,
+                        width: "30px",
+                        height: "30px",
+                        borderRadius: "3px",
+                        margin: "0 2px",
+                      }}
+                      className="colors"
+                    ></Grid>
+                  ))}
+                </Grid>
+                  {graphColor && graphColor._id === item._id ? ( <Done className="selcted" /> ) : null} 
+                  {item.user_id ? (<IconButton edge="end" aria-label="delete palatte" onClick={(event) => deletePalatte(item._id, event)} className="selcted">
+                      <Delete />
+                  </IconButton>): null}
+
               </Grid>
-            </Grid>
-            {graphColor && graphColor._id === item._id ? (
-              <ListItemSecondaryAction
-                className={classNames(classes.dFlex, classes.aCenter)}
-              >
-                <Done />
-              </ListItemSecondaryAction>
-            ) : null}
-          </ListItem>
-        ))}
-      </List>
-      <MakeColorModal
-        open={open}
-        handleCloseModal={handleCloseModal}
-        newColorName={newColorName}
-        setNewColorName={setNewColorName}
-        nameCreated={nameCreated}
-        setNameCreated={setNameCreated}
-        colors={colors}
-        setColors={setColors}
-        handleCreateColor={handleCreateColor}
-        isPublish={isPublish}
-        setIsPublish={setIsPublish}
-      />
-      <Snackbar
-        open={openAlert.open}
-        autoHideDuration={5000}
-        onClose={() => setOpenAlert({ ...openAlert, open: false })}
-      >
-        <Alert
-          onClose={() => setOpenAlert({ ...openAlert, open: false })}
-          severity={openAlert.status}
+            </ListItem>
+          ))}
+        </List>
+        <Button
+          variant="outlined"
+          color="primary"
+          startIcon={<AddCircleOutlineIcon />}
+          className="secondary-btn w-100"
+          onClick={() => handleOpenModal(true)}
         >
-          {openAlert.text}
-        </Alert>
-      </Snackbar>
+          Choose your own custom color!
+        </Button>
+        <MakeColorModal
+          open={open}
+          handleCloseModal={handleCloseModal}
+          newColorName={newColorName}
+          setNewColorName={setNewColorName}
+          nameCreated={nameCreated}
+          setNameCreated={setNameCreated}
+          colors={colors}
+          setColors={setColors}
+          handleCreateColor={handleCreateColor}
+          isPublish={isPublish}
+          setIsPublish={setIsPublish}
+        />
+        <Snackbar
+          open={openAlert.open}
+          autoHideDuration={7500}
+          onClose={() => setOpenAlert({ ...openAlert, open: false })}
+        >
+          <Alert
+            onClose={() => setOpenAlert({ ...openAlert, open: false })}
+            severity={openAlert.status}
+          >
+            {openAlert.text}
+          </Alert>
+        </Snackbar>
+        </div>
+      </div>
     </React.Fragment>
   );
 }

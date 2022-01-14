@@ -11,7 +11,7 @@ import { Avatar, Backdrop, Button, Checkbox, Fade, FormControlLabel, Grid, IconB
 import { Add, Close, PlayArrow } from "@material-ui/icons";
 import MuiAlert from '@material-ui/lab/Alert';
 import { ColorPicker } from 'material-ui-color';
-
+import './set-color.scss';
 const useStyles = makeStyles(styles);
 
 function Alert(props) {
@@ -79,49 +79,51 @@ export default function SetColor({
                 BackdropProps={{
                     timeout: 500,
                 }}
-                className={classNames(classes.modal, classes.makeColorModal)}
+                className="modal"
             >
-                <Fade in={open} className={classNames(classes.bgWhite, classes.modalBody)}>
-                    <div className={classes.paper}>
-                        <IconButton color="primary" aria-label="close" className={classes.modalCloseBtn} onClick={() => handleCloseModal()} size="small">
+                <Fade in={open} className="modal-container modal-md">
+                    <div className="modal-content">
+                        <IconButton color="primary" aria-label="close" className="close-btn" onClick={() => handleCloseModal()} size="small">
                             <Close fontSize="inherit" />
                         </IconButton>
                         {
                             nameCreated ? <Fragment>
-                                <Typography variant="h4" className={classNames(classes.mh50, classes.tCenter)}>{newColorName}</Typography>
-                                <Typography variant="caption" className={classNames(classes.tCenter, classes.w100, classes.dBlock, classes.mv10)}>Choose 1 - 5 colors for your color palette</Typography>
-                                <Grid className={classNames(classes.dFlex, classes.aCenter, classes.jCenter)}>
-                                    {
-                                        colors.map((item, i) => (
-                                            <Grid key={i} className={classNames(classes.dFlex, classes.fColumn, classes.mh5)}>
-                                                <ColorPicker value={item.color} hideTextfield onChange={(e) => changeColor(e, item.id)} />
-                                                <Grid className={classNames(classes.dFlex, classes.jCenter)}>
-                                                    <IconButton color="primary" aria-label="add color" onClick={() => deleteColor(item.id)} size="small">
-                                                        <Close fontSize="inherit" />
-                                                    </IconButton>
+                                <div className="modal-body">
+                                    <Typography variant="h4" className="modal-title text-capitalize">{newColorName}</Typography>
+                                    <Typography variant="caption" className="modal-subtitle">Choose 1 - 5 colors for your color palette</Typography>
+                                    <Grid className="color-pick-container">
+                                        {
+                                            colors.map((item, i) => (
+                                                <Grid key={i} className="color">
+                                                    <ColorPicker value={item.color} hideTextfield onChange={(e) => changeColor(e, item.id)} />
+                                                    <Grid className={classNames(classes.dFlex, classes.jCenter)}>
+                                                        <IconButton color="primary" aria-label="add color" onClick={() => deleteColor(item.id)} size="small">
+                                                            <Close fontSize="inherit" />
+                                                        </IconButton>
+                                                    </Grid>
                                                 </Grid>
-                                            </Grid>
-                                        ))
-                                    }
-                                    {
-                                        colors.length < 5 ?
-                                            <IconButton color="primary" aria-label="add color" onClick={() => addColor()}>
-                                                <Add />
-                                            </IconButton>
-                                            : null
-                                    }
-                                </Grid>
-                                <Typography variant="caption" className={classNames(classes.tCenter, classes.w100, classes.dBlock, classes.mv10)} color="primary">{colors.length > 0 ? `Hover over a color and click the X to remove it.` : `Click the plus button to add a color.`}</Typography>
-                                <Grid container justify="center">
-                                    <FormControlLabel
-                                        control={<Checkbox checked={isPublish} onChange={e => setIsPublish(e.target.checked)} name="publish" color="primary" />}
-                                        label="Publish"
-                                    />
-                                </Grid>
+                                            ))
+                                        }
+                                        {
+                                            colors.length < 5 ?
+                                                <IconButton color="primary" aria-label="add color" onClick={() => addColor()}>
+                                                    <Add />
+                                                </IconButton>
+                                                : null
+                                        }
+                                    </Grid>
+                                    <Typography variant="caption" className="modal-subtitle text-center w-100">{colors.length > 0 ? `Hover over a color and click the X to remove it.` : `Click the plus button to add a color.`}</Typography>
+                                </div>
                                 {
                                     colors.length > 0 ?
-                                        <Grid className={classNames(classes.dFlex, classes.jCenter)}>
-                                            <Button variant="outlined" color="primary" onClick={() => handleCreateColor()}>
+                                        <Grid className="modal-footer">
+                                         <Grid>
+                                            <FormControlLabel
+                                                control={<Checkbox checked={isPublish} onChange={e => setIsPublish(e.target.checked)} name="publish" color="primary" />}
+                                                label="Publish"
+                                            />
+                                        </Grid> 
+                                            <Button className="primary-btn" onClick={() => handleCreateColor()}>
                                                 Create
                                             </Button>
                                         </Grid>
@@ -130,13 +132,17 @@ export default function SetColor({
                             </Fragment>
                                 :
                                 <Fragment>
-                                    <Typography variant="h5" className={classes.mh50}>Create a color palette</Typography>
-                                    <TextField id="outlined-basic" label="Name your color palette" value={newColorName} onChange={(e) => setNewColorName(e.target.value)} className={classNames(classes.mt10, classes.w100)} variant="outlined" />
-                                    <Grid className={classNames(classes.dFlex, classes.jRight)}>
-                                        <Button variant="outlined" color="primary" className={classes.mt10} onClick={() => saveName()}>
-                                            Save Name
-                                        </Button>
-                                    </Grid>
+                                    <div className="modal-body" >
+                                        <Typography variant="h5" className="modal-title">Create a color palette</Typography>
+                                        <div className="text-box">
+                                            <TextField id="outlined-basic" label="Name your color palette" value={newColorName} onChange={(e) => setNewColorName(e.target.value)} className="w-100" variant="outlined" />
+                                        </div>
+                                        <Grid className="text-right">
+                                            <Button className="primary-btn" onClick={() => saveName()}>
+                                                Save Name
+                                            </Button>
+                                        </Grid>
+                                    </div>
                                 </Fragment>
                         }
                     </div>
